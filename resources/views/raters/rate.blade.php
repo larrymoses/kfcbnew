@@ -1,7 +1,6 @@
 @extends('layouts.wizard')
 @section('title', 'Unrated Films')
 @section('content')
-
     <div class="page-content">
         <div class="row">
             <div class="col-md-12">
@@ -827,13 +826,14 @@
             var btnStart = $('.btnStart');
             var btnStop = $('.btnStop');
             next.hide();
-            btnStart.hide();
+            //btnStart.hide();
             $(".thm1").hide();
             $(".thm2").hide();
             $(".thm3").hide();
             $(".thm4").hide();
             $(".thm5").hide();
             $(".thm6").hide();
+            console.log(h1);
 
             function add() {
                 seconds++;

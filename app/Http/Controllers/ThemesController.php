@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Themesd;
+use App\Models\Themes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -54,7 +54,7 @@ class ThemesController extends Controller
                 ->withErrors($validator);
         }
 
-        $task = new Themesd();
+        $task = new Themes();
         $task->name = $request->name;
         $task->description = $request->description;
         $task->createdby = Auth::User()->id;;

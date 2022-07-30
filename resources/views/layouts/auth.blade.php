@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
-
 <head>
     <meta charset="utf-8"/>
-    <title>KFCB | Rater Portal</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <title>{{ config('app.name') }} | @yield('title')</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="" name="description"/>
@@ -76,7 +73,8 @@
                     </div>
                     <div class="col-xs-8 bs-reset">
                         <div class="login-copyright text-right">
-                            <p>KFCB &copy; 2016 - Powered by <a href="http://www/flag42.com"> Flag 42</a></p>
+                            <p>KFCB &copy; 2022 - Powered by <a href="http://www/synaptic.co.ke"> Synaptic Solutions</a>
+                            </p>
                         </div>
                     </div>
                 </div>

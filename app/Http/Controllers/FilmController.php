@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\AuditLog;
-use App\Film;
-use App\FilmExaminer;
 use App\Http\Requests;
-use App\Users;
+use App\Models\AuditLog;
+use App\Models\Film;
+use App\Models\FilmExaminer;
+use App\Models\Users;
 use Auth;
 use Datatables;
 use DB;
@@ -231,6 +231,7 @@ class FilmController extends Controller
             ->editColumn('id', "{{ \$id }}")
 //            ->editColumn('created_at', date("H:i d/m/y", "{{\$created_at}}"))
             ->addColumn('actions', $action)
+            ->rawColumns(['rated', 'actions', 'poster', 'created_at'])
             ->make(true);
     }
 
@@ -259,6 +260,7 @@ class FilmController extends Controller
                             @endif')
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['rated', 'actions', 'poster', 'created_at'])
             ->make(true);
     }
 
@@ -275,6 +277,7 @@ class FilmController extends Controller
         return Datatables::of($films)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['rated', 'actions', 'poster', 'created_at'])
             ->make(true);
     }
 
@@ -288,12 +291,13 @@ class FilmController extends Controller
         return Datatables::of($films)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['rated', 'actions', 'poster', 'created_at'])
             ->make(true);
     }
 
     public function storeFilmExaminer(Request $request)
     {
-        $rate = FilmExaminer::firstOrNew(array('userID' => Input::get('userID'), 'filmID' => Input::get('filmID')));
+        $rate = FilmExaminer::firstOrNew(array('userID' => $request->input('userID'), 'filmID' => $request->input('filmID')));
         $rate->filmID = $request->input('filmID');
         $rate->userID = $request->input('userID');
         $rate->status = 0;

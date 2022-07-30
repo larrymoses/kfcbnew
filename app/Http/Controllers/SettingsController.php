@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\AuditLog;
 use App\Http\Requests;
-use App\ThemeParam;
-use App\Themesd;
+use App\Models\AuditLog;
+use App\Models\ThemeParam;
+use App\Models\Themes;
 use Auth;
 use Datatables;
 use DB;
@@ -69,12 +69,13 @@ class SettingsController extends Controller
         return Datatables::of($parameters)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['actions', 'created_at'])
             ->make(true);
     }
 
     public function getThemes()
     {
-        $themes = Themesd::all();
+        $themes = Themes::all();
         $action = '<div class="btn-group">
                             <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">Action <span class="caret"></span></button>
                             <ul class="dropdown-menu">
@@ -84,6 +85,7 @@ class SettingsController extends Controller
         return Datatables::of($themes)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['actions', 'created_at'])
             ->make(true);
     }
 
@@ -92,7 +94,7 @@ class SettingsController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:themes|max:255',
         ]);
-        $film = new Themesd();
+        $film = new Themes();
         $film->name = $request->input('name');
         $film->description = $request->input('description');
         $film->createdby = Auth::User()->id;

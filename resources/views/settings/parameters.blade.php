@@ -78,7 +78,7 @@
                             <div class="form-group">
                                 <label for="length" class="col-lg-2 col-md-3 control-label"> Theme Name</label>
                                 <div class="col-lg-10 col-md-9">
-                                    {!! Form::select('theme',[''=>'Select Theme']+ $themes,['id'=>'e1'], ['class' => 'form-control required select2'],['required'],'' ) !!}
+{{--                                    {!! Form::select('theme',[''=>'Select Theme']+ $themes,['id'=>'e1'], ['class' => 'form-control required select2'],['required'],'' ) !!}--}}
                                 </div>
                             </div>
 
@@ -127,7 +127,7 @@
                                 <div class="form-group">
                                     <label for="length" class="col-lg-2 col-md-3 control-label"> Theme Name</label>
                                     <div class="col-lg-10 col-md-9">
-                                        {!! Form::select('theme',[''=>'Select Theme']+ $themes,['id'=>'editThemeID'], ['class' => 'form-control required select2'],['required'],'' ) !!}
+                                        {{--                                        {!! Form::select('theme',[''=>'Select Theme']+ $themes,['id'=>'editThemeID'], ['class' => 'form-control required select2'],['required'],'' ) !!}--}}
                                     </div>
                                 </div>
 

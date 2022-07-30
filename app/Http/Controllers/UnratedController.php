@@ -98,6 +98,7 @@ class UnratedController extends Controller
         return Datatables::of($films)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['rated', 'actions', 'poster', 'created_at'])
             ->make(true);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Film;
 use App\Http\Requests;
+use App\Models\Film;
 use Auth;
 use Datatables;
 use DB;
@@ -47,6 +47,7 @@ class MRaterController extends Controller
         return Datatables::of($films)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['rated', 'actions', 'poster', 'created_at'])
             ->make(true);
     }
 }

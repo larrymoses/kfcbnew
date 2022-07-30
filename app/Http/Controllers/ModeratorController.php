@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\AuditLog;
-use App\Film;
 use App\Http\Requests;
-use App\Moderating;
-use App\Rating;
-use App\Users;
+use App\Models\AuditLog;
+use App\Models\Film;
+use App\Models\Moderating;
+use App\Models\Rating;
+use App\Models\Users;
 use Auth;
 use Datatables;
 use DB;
@@ -56,9 +56,10 @@ class ModeratorController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make(Input::All(), [
+        $validator = Validator::make($request->all(), [
             'ratescore' => 'required',
         ]);
+
         if ($validator->fails()) {
             $logs = new AuditLog();
             $logs->username = Auth::User()->username;

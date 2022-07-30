@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\AuditLog;
-use App\Film;
 use App\Http\Requests;
-use App\RatedMe;
-use App\Rating;
-use App\TempRate;
-use App\ThemeOccurance;
+use App\Models\AuditLog;
+use App\Models\Film;
+use App\Models\RatedMe;
+use App\Models\Rating;
+use App\Models\TempRate;
+use App\Models\ThemeOccurance;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
@@ -303,6 +303,7 @@ class RatersController extends Controller
         return Datatables::of($films)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['rated', 'actions', 'poster', 'created_at'])
             ->make(true);
     }
 
@@ -319,6 +320,7 @@ class RatersController extends Controller
         return Datatables::of($films)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['rated', 'actions', 'poster', 'created_at'])
             ->make(true);
     }
 
@@ -332,6 +334,7 @@ class RatersController extends Controller
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('imgpath', $imgpath)
             ->addColumn('actions', $action)
+            ->rawColumns(['rated', 'actions', 'poster', 'created_at'])
             ->make(true);
     }
 
@@ -345,6 +348,7 @@ class RatersController extends Controller
         return Datatables::of($films)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['actions', 'created_at'])
             ->make(true);
     }
 
