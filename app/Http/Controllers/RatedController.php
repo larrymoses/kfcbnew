@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Anouar\Fpdf\Fpdf;
 use App\Http\Requests;
 use Auth;
+use Codedge\Fpdf\Fpdf\Fpdf;
 use Datatables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -118,6 +118,7 @@ class RatedController extends Controller
         return Datatables::of($films)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['rated', 'actions', 'poster', 'created_at'])
             ->make(true);
     }
 

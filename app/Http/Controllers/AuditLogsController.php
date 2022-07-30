@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\AuditLog;
 use App\Http\Requests;
+use App\Models\AuditLog;
 use Datatables;
 use DB;
 use Illuminate\Http\Request;
@@ -103,6 +103,7 @@ class AuditLogsController extends Controller
                                 <span class="text-danger">Failled</span>
                             @endif')
             ->editColumn('id', "{{ \$id }}")
+            ->rawColumns(['status', 'created_at'])
             ->make(true);
     }
 }

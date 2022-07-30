@@ -35,7 +35,7 @@ Route::get('/dashboard', [HomeController::class, 'index']);
 Route::get('getusers/{id}', [UserController::class, 'getusers']);
 Route::get('getusers/{status}', [UserController::class, 'getUser']);
 Route::get('getuserbyid/{id}', [UserController::class, 'getUserById']);
-
+Route::get('usergroups/{status}', [GroupController::class, 'getUserGroups']);
 //Films Routes
 Route::get('films/get_list', [FilmController::class, 'getFilmsList']);
 Route::get('films/get_examiners', [FilmController::class, 'getFilmsExaminers']);
@@ -48,7 +48,10 @@ Route::post('examiner/remove', [FilmController::class, 'removeExaminer']);
 Route::post('storefilmexaminer', [FilmController::class, 'storeFilmExaminer']);
 Route::delete('removefilmexaminer', [FilmController::class, 'removeFilmExaminer']);
 //Films Routes
-
+Route::post('/poster_rate/{id}', [RatersController::class, 'store_poster_rate']);
+Route::get('/certificate/print/{id}', [RatedController::class, 'printCertificate']);
+Route::get('certificate/poster/{id}', [RatedController::class, 'posterCertificate']);
+Route::get('/declined/get_list/', [DeclinedController::class, 'getFilmsList']);
 Route::get('/mrater/', [MRaterController::class, 'index']);
 Route::get('/mrate/{id}', [MRaterController::class, 'rate']);
 Route::get('/mposter/', [MRaterController::class, 'rate_poster']);
@@ -118,7 +121,7 @@ Route::resources([
     '/reports' => ReportController::class,
     '/auditlogs' => AuditLogsController::class,
     'genre' => GenreController::class,
-    '/usergroups' => GroupController::class,
+    '/group' => GroupController::class,
     '/moderator' => ModeratorController::class,
     '/rater' => RatersController::class,
     '/unrated' => UnratedController::class,

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\AuditLog;
 use App\Http\Requests;
-use App\Users;
+use App\Models\AuditLog;
+use App\Models\Users;
 use Auth;
 use Datatables;
 use DB;
@@ -46,7 +46,7 @@ class UserController extends Controller
             'lastname' => 'required',
             'email' => 'required|email|max:255|unique:users',
         ]);
-        $validator = Validator::make(Input::All(), [
+        $validator = Validator::make($request->all(), [
             'phone' => 'required|unique:users',
             'GroupID' => 'required',
             'firstname' => 'required',
@@ -95,7 +95,7 @@ class UserController extends Controller
             return response()->json([
                 'success' => false,
                 'status' => '00',
-                'message' => '<code>' . Input::get('firstname') . '</code>' . ' Created Successfully'
+                'message' => '<code>' . $user->name . '</code>' . ' Created Successfully'
             ]);
         }
     }
@@ -267,6 +267,7 @@ class UserController extends Controller
         return Datatables::of($users)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['actions', 'created_at'])
             ->make(true);
     }
 

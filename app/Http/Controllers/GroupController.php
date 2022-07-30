@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Group;
 use App\Http\Requests;
+use App\Models\Group;
 use Auth;
 use Datatables;
 use DB;
@@ -74,7 +74,7 @@ class GroupController extends Controller
             return response()->json([
                 'success' => false,
                 'status' => '00',
-                'message' => '<code>' . Input::get('groupname') . '</code>' . ' Created Successfully'
+                'message' => '<code>' . $request->input('groupname') . '</code>' . ' Created Successfully'
             ]);
         }
 
@@ -210,6 +210,7 @@ class GroupController extends Controller
         return Datatables::of($groups)
             ->editColumn('id', "{{ \$id }}")
             ->addColumn('actions', $action)
+            ->rawColumns(['actions', 'created_at'])
             ->make(true);
     }
 

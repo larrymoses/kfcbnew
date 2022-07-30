@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Anouar\Fpdf\Fpdf;
-use App\Film;
 use App\Http\Requests;
+use App\Models\Film;
 use Datatables;
 use DB;
 

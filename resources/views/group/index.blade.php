@@ -185,7 +185,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" id="btnCreate" class="btn btn-success">Save</button>
-                    <a href="{{url('/usergroups')}}" type="button" class="btn btn-default">Close</a>
+                    <a href="{{url('/group')}}" type="button" class="btn btn-default">Close</a>
                 </div>
             </div>
         </div>
@@ -230,7 +230,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="btnSaveEdit" class="btn btn-success">Save changes</button>
-                    <a href="{{url('/usergroups')}}" type="button" class="btn btn-default">Close</a>
+                    <a href="{{url('/group')}}" type="button" class="btn btn-default">Close</a>
                 </div>
             </div>
         </div>
@@ -273,7 +273,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" id="btnDeactivate" class="btn btn-danger">Deactivate</button>
-                    <a href="{{url('/usergroups')}}" type="button" class="btn btn-default">Close</a>
+                    <a href="{{url('/group')}}" type="button" class="btn btn-default">Close</a>
                 </div>
             </div>
         </div>
@@ -314,7 +314,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" id="btnActivate" class="btn btn-success">Approve Activation</button>
-                    <a href="{{url('/usergroups')}}" type="button" class="btn btn-default">Close</a>
+                    <a href="{{url('/group')}}" type="button" class="btn btn-default">Close</a>
                 </div>
             </div>
         </div>
@@ -357,7 +357,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" id="btnDecline" class="btn btn-danger">Decline Approval</button>
-                    <a href="{{url('/usergroups')}}" type="button" class="btn btn-default">Close</a>
+                    <a href="{{url('/group')}}" type="button" class="btn btn-default">Close</a>
                 </div>
             </div>
         </div>
@@ -484,7 +484,7 @@
 
                 $.ajax({
                     method: "PUT",
-                    url: "usergroups/" + id,
+                    url: "group/" + id,
                     data: {id: id, groupname: groupname, bankcode: bankcode, description: description},
                     success: function (data, status) {
                         switch (status) {
@@ -524,7 +524,7 @@
                 var data = frm.serialize();
                 $.ajax({
                     method: "POST",
-                    url: "usergroups",
+                    url: "group",
                     data: data,
                     success: function (data, status) {
                         switch (status) {

@@ -159,7 +159,7 @@
                                 </a>
                             </li>
                             <li class="nav-item  ">
-                                <a href="{{url('usergroups')}}" class="nav-link ">
+                                <a href="{{url('group')}}" class="nav-link ">
                                     <span class="title">User Groups</span>
                                 </a>
                             </li>
@@ -252,7 +252,7 @@
                                 </a>
                             </li>
                             <li class="nav-item  ">
-                                <a href="{{url('usergroups')}}" class="nav-link ">
+                                <a href="{{url('group')}}" class="nav-link ">
                                     <span class="title">User Groups</span>
                                 </a>
                             </li>
